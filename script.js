@@ -1,0 +1,3 @@
+function calculateChadna (argument) {
+	dadas
+}

@@ -1,9 +1,40 @@
 <head>
+	<title>Chanda Calculator MKAS</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="script.js"></script>
+
+	<script type="text/javascript">
+		function calculateChanda (argument) {
+			var netIncome = $('netIncome');
+			var healthInsurance = $('healthInsurance');
+
+			printResult(1);
+		}
+
+		function printResult (argument) {
+			alert(argument);
+			$('chandaResult').innerHTML = "TALHA HAS STILL NO IDEAS AS ALWAYS";
+		}
+
+		function $(id) {
+			return document.getElementById(id)
+		}
+	</script>
 </head>
 
 <body>
 	<h1>Chanda Calculator MKAS</h1>
 	<!-- Input Values -->
-	Net Income: <input type="text" /> CHF
-	<input type="submit" value="Calculate" />
+
+	<form onsubmit="calculateChanda();">
+		Net Income: <input id="netIncome" type="text" /> CHF
+		HealthInsurance: <input id="healthInsurance" type="text" /> CHF
+		<input type="submit" value="Calculate" />
+	</form>
+
+	<!-- Results -->
+	<div>
+		<p id="chandaResult">
+		</p>
+	</div>
 </body>
