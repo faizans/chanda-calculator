@@ -1,3 +1,0 @@
-function calculateChadna (argument) {
-	dadas
-}
