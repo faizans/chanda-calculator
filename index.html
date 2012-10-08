@@ -1,19 +1,43 @@
 <head>
-	<title>Chanda Calculator MKAS</title>
+	<title>Chanda Rechner MKAS</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript" src="script.js"></script>
 
 	<script type="text/javascript">
-		function calculateChanda (argument) {
-			var netIncome = $('netIncome');
-			var healthInsurance = $('healthInsurance');
 
-			printResult(1);
+		var CHANDA_AAM_PART = 16;
+		var CHANDA_WASSIAT_PART = 10;
+		var CHANDA_JALSA_PART = 12;
+		var CHANDA_TAX_PART = 12;
+
+		function calculateChanda (argument) {
+			var netIncome = $('netIncome').value;
+			var healthInsurance = $('healthInsurance').value;
+			var tax = parseFloat(netIncome/CHANDA_TAX_PART).toFixed(2);
+			var budget = parseFloat(netIncome-tax-healthInsurance).toFixed(2);
+
+			var chandaAam = (budget/CHANDA_AAM_PART).toFixed(2);
+			var majlis = (budget/100).toFixed(2);
+			var ijtema = (budget*0.025/12).toFixed(2);
+			var jalsa = (budget/120).toFixed(2);
+
+			printResult(budget, chandaAam, majlis, ijtema, jalsa);
 		}
 
-		function printResult (argument) {
-			alert(argument);
-			$('chandaResult').innerHTML = "TALHA HAS STILL NO IDEAS AS ALWAYS";
+		function printResult (budget, aam, majlis, ijtema, jalsa) {
+			var result = "<b>Budget:</b> "+budget.toString();
+
+			result += "<br />";
+			result += "<br />";
+			result += "<b>Chanda Aam</b>: "+aam.toString()+" CHF";
+			result += "<br />";
+			result += "<b>Chanda Majlis</b>: "+majlis.toString()+" CHF";
+			result += "<br />";
+			result += "<b>Chanda Ijtema</b>: "+ijtema.toString()+" CHF";
+			result += "<br />";
+			result += "<b>Chanda Jalsa Salana</b>: "+jalsa.toString()+" CHF";
+
+			$('chandaResult').innerHTML = result;
 		}
 
 		function $(id) {
@@ -23,13 +47,14 @@
 </head>
 
 <body>
-	<h1>Chanda Calculator MKAS</h1>
+	<h1>Chanda Rechner MKAS</h1>
 	<!-- Input Values -->
 
+		Nettoeinkommen: <input id="netIncome" type="text" /> CHF <br />
+		Krankenkassenprämie: <input id="healthInsurance" type="text" /> CHF <br />
+		<input type="submit" value="Calculate" onclick="calculateChanda();" />
+	
 	<form onsubmit="calculateChanda();">
-		Net Income: <input id="netIncome" type="text" /> CHF
-		HealthInsurance: <input id="healthInsurance" type="text" /> CHF
-		<input type="submit" value="Calculate" />
 	</form>
 
 	<!-- Results -->
@@ -37,4 +62,6 @@
 		<p id="chandaResult">
 		</p>
 	</div>
+
+
 </body>
