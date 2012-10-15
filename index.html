@@ -3,10 +3,13 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript" src="script.js"></script>
 
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+
 	<script type="text/javascript">
 
 		var CHANDA_AAM_PART = 16;
-		var CHANDA_WASSIAT_PART = 10;
+		var CHANDA_MUSI_PART = 10;
 		var CHANDA_JALSA_PART = 12;
 		var CHANDA_TAX_PART = 12;
 
@@ -49,19 +52,28 @@
 <body>
 	<h1>Chanda Rechner MKAS</h1>
 	<!-- Input Values -->
+		<label>
+			Musi?
+		</label>
+		<input class="input-medium" id="isMusi" type="checkbox" />
+		<span class="help-block">Angeben ob Musi Chanda oder nicht.</span>
+		<label>
+			Nettoeinkommen: 
+		</label>
+		<input class="input-medium" id="netIncome" size="40" type="text" placeholder="2500.00"/> CHF
+		<span class="help-block">Nettoeinkommen auf Lohnabrechnung.</span><br />
 
-		Nettoeinkommen: <input id="netIncome" type="text" /> CHF <br />
-		Krankenkassenprämie: <input id="healthInsurance" type="text" /> CHF <br />
+		<label>
+			Krankenkassenprämie:
+		</label>
+		<input class="input-medium" id="healthInsurance" type="text" /> CHF <br />
+		<span class="help-block">Monatliche Krankenkassenprämie.</span>
 		<input type="submit" value="Calculate" onclick="calculateChanda();" />
-	
-	<form onsubmit="calculateChanda();">
+
 	</form>
 
 	<!-- Results -->
-	<div>
-		<p id="chandaResult">
-		</p>
-	</div>
-
+	<p id="chandaResult">
+	</p>
 
 </body>
